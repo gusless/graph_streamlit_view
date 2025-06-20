@@ -1,0 +1,58 @@
+body {
+    background-color: #424549;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+div.card {
+    background-color: #424549;
+    display: flex;
+    align-items: center;
+}
+
+div.vis-configuration-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    box-sizing: border-box;
+}
+
+div.vis-configuration.vis-config-item.vis-config-s0 {
+    display: flex;
+    box-sizing: border-box;
+    margin: 1em;
+}
+
+div.vis-configuration.vis-config-header {
+    font-size: 2em;
+}
+
+#mynetwork {
+    width: 60vw;
+    height: 750px;
+    background-color: #ffffff34;
+    border: 1px solid lightgray;
+    position: relative;
+    float: left;
+    }
+ 
+#config {
+    float: left;
+    width: 50%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1460px) {
+    #mynetwork {
+        width: 1000px
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+}
