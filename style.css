@@ -6,17 +6,30 @@ body {
     box-sizing: border-box;
 }
 
+.graph {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 div.card {
     background-color: #424549;
     display: flex;
     align-items: center;
 }
 
+.card-body {
+    margin: 0px 100px;
+}
+
 div.vis-configuration-wrapper {
+    background-color: #ffffff34;
     display: flex;
     flex-direction: column;
     width: 550px;
     box-sizing: border-box;
+    margin: 10% 0%;
+    border-radius: 15px;
 }
 
 div.vis-configuration.vis-config-item.vis-config-s0 {
@@ -55,4 +68,12 @@ div.vis-configuration.vis-config-header {
         display: flex;
         flex-direction: column;
     }
+    div.vis-configuration-wrapper{
+        margin: 20% -5%;
+    }
+    .graph {
+        display: flex;
+        flex-direction: column;
+}
+
 }
