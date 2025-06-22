@@ -1,2 +1,1 @@
-css_file = "style.css"
-html_file = "test.html"
+html_file = "graph.html"
