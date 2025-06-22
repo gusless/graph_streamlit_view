@@ -4,7 +4,7 @@ Este projeto é uma aplicação interativa feita com **Streamlit** para explorar
 
 ## Deploy
 
-[Visualização hospedada pelo Streamlit](https://graphview-stack-overflow.streamlit.app)
+[Visualização hospedada pelo Streamlit Cloud](https://graphview-stack-overflow.streamlit.app)
 
 ## Funcionalidades
 
