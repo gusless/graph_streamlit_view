@@ -24,12 +24,14 @@ tipo = st.selectbox(
 df_nodes = pd.read_csv("dataset/stack_network_nodes.csv")
 grupos_disponiveis = sorted(df_nodes["group"].unique())
 
+
 groups = st.multiselect(
     "Filtrar por grupo(s) (opcional):",
     options=grupos_disponiveis,
     default=grupos_disponiveis,
     help="Selecione os grupos de nós que deseja visualizar"
 )
+
 
 generate_graph(tipo=tipo, selected_groups=groups)
 

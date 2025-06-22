@@ -1,7 +1,4 @@
-import streamlit as st
-import streamlit.components.v1 as components
 import networkx as nx
-import matplotlib.pyplot as plt
 from pyvis.network import Network
 import pandas as pd
 
@@ -32,22 +29,6 @@ def generate_graph(tipo="completo", physics=True, selected_groups=None): #Cria o
             df_edges['source'].isin(nomes_validos) & df_edges['target'].isin(nomes_validos)
         ]
 
-    color_map = {
-    'Data/Science': '#f09494',
-    '.NET': '#eebcbc',
-    'JavaScript': '#72bbd0',
-    'iOS/Apple': '#91f0a1',
-    'Infra/Sistemas': '#629fff',
-    'Web': '#bcc2f2',
-    'Angular/Typescript': '#eebcbc',
-    'Java': '#f1f0c0',
-    'DevOps/Cloud': '#d2ffe7',
-    'Big Data': '#caf3a6',
-    'Testes': '#ffdf55',
-    'Metodologias': '#ef77aa',
-    'Regex/Legacy': '#d6dcff',
-    'Excel/VBA': '#d2f5f0'
-    }
 
     def normalize(value, min_size=10, max_size=150):
         if tipo == "alto_grau":
@@ -80,9 +61,19 @@ def generate_graph(tipo="completo", physics=True, selected_groups=None): #Cria o
     for node in G_nx.nodes(data=True):
         name = node[0]
         group = node[1].get('group', 1)
-        color = color_map.get(group, "#FFFFFF")
+        color = config.color_map.get(group, "#FFFFFF")
         size = normalize(centrality.get(name, 0))
-        G.add_node(name, label=name, title=name, color=color, size=size)
+        G.add_node(name, label=name, title=group, color=color, size=size)
+        title = f"{name}<br>Grupo: {group}"
+
+        G.add_node(
+        name, 
+        label=name, 
+        title=title, 
+        color=color, 
+        size=size,
+        font={"size": 14}
+        )
 
     for source, target, data in G_nx.edges(data=True):
         G.add_edge(source, target, value=data.get('weight', 1))
@@ -90,6 +81,7 @@ def generate_graph(tipo="completo", physics=True, selected_groups=None): #Cria o
     # Fisica
     if physics:
         G.show_buttons(filter_=['physics'])
+        G.barnes_hut(gravity=-8000, central_gravity=0.3, spring_length=150)
 
     G.write_html(config.html_file, notebook=False)
 
@@ -120,6 +112,7 @@ def calc_metrics(G_nx):
         metricas["Componentes Conectados"] = nx.number_connected_components(G_nx)
 
     return metricas
+
 def calc_cent(G_nx):
     try:
         eig = nx.eigenvector_centrality(G_nx)
