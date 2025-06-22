@@ -24,13 +24,7 @@ Este projeto é uma aplicação interativa feita com **Streamlit** para explorar
 
 ## Como rodar
 
-1. Instale as dependências:
-
-```bash
-pip install -r requirements.txt
-```
-
-2. Execute o Streamlit:
+1. Execute o Streamlit no terminal:
 
 ```bash
 streamlit run app.py
